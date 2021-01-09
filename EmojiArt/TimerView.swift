@@ -10,8 +10,17 @@ import SwiftUI
 
 struct TimerView: View {
     @ObservedObject var timeCounter = TimeCounter()
+    
     var body: some View {
-        Text("Zeit: \(timeCounter.time)")
+        Text("Zeit: \(timeCounter.time)s")
+            .onAppear(){
+                //load timer value
+                
+            }
+            .onDisappear(){
+                // Save timer value
+                UserDefaults.standard.set(timeCounter.time, forKey: "timer")
+            }
     }
 }
 
