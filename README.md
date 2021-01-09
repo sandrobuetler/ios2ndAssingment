@@ -25,12 +25,12 @@
 * Wählen Sie eine geeignete Möglichkeit, um zum BackgroundColorForm zu navigieren
 * Die Hintergrundfarbe wird ebenfalls gespeichert
 
-#### 04-CoreData
+#### ~~04-CoreData~~
 
-* Bauen Sie EmojiArt so um, dass jegliche Daten in Core Data persistiert werden
-* Emoji Paletten
-* Emoji Art Dokumente
-* Entfernen Sie jegliche Verwendungen von UserDefaults
+* ~~Bauen Sie EmojiArt so um, dass jegliche Daten in Core Data persistiert werden~~
+* ~~Emoji Paletten~~
+* ~~Emoji Art Dokumente~~
+* ~~Entfernen Sie jegliche Verwendungen von UserDefaults~~
 
 #### 05-Testing
 
