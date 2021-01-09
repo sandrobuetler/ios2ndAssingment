@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct EmojiArtDocumentView: View {
+    
     @ObservedObject var document: EmojiArtDocument
     @State private var chosenPalette: String = ""
     @State private var isPastingExplanationPresented: Bool = false
@@ -10,6 +11,8 @@ struct EmojiArtDocumentView: View {
         self.document = document
         chosenPalette = document.defaultPalette
     }
+    
+    
 
     var body: some View {
         VStack {
@@ -25,6 +28,7 @@ struct EmojiArtDocumentView: View {
                     }
                 }
             }
+            TimerView()
             GeometryReader { geometry in
                 ZStack {
                     Color.white.overlay(
