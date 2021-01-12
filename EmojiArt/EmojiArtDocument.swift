@@ -79,7 +79,7 @@ class EmojiArtDocument: ObservableObject, Hashable, Equatable, Identifiable {
     }
     
     @available(iOS 14.0, *)
-    func saveUserSettings() {
+    func saveColor() {
         let defaultsKey = "EmojiArtDocument.\(id.uuidString)"
         var colorData: NSData?
         let bgColor: UIColor? = UIColor(self.bgColor)
@@ -88,9 +88,11 @@ class EmojiArtDocument: ObservableObject, Hashable, Equatable, Identifiable {
                 let data = try NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false) as NSData?
                 colorData = data
               } catch {
-                print("Could not save color to defaults")
+                
+                print("Could not save color")
               }
             }
+        
         UserDefaults.standard.set(colorData, forKey: "\(defaultsKey).bgColor")
         
     }

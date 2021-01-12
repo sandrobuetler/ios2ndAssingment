@@ -19,22 +19,21 @@ struct EmojiArtDocumentView: View {
     
     var timer: TimeCounter {
         let t = TimeCounter(totalUsedTime: 0)
+        
         if opend {
             return t
         } else {
             return document.timer
         }
     }
-
+    
+    
 
     var body: some View {
         VStack {
             if !opend{
                 HStack {
-                    
                     PaletteChooser(document: document, chosenPalette: $chosenPalette)
-                    //ColorPicker("",selection: $document.backGroundColor).frame(width: 45, alignment: .center)
-                    
                     ScrollView(.horizontal) {
                         HStack {
                             ForEach(self.chosenPalette.map { String($0) }, id: \.self) { emoji in
@@ -45,8 +44,7 @@ struct EmojiArtDocumentView: View {
                         }
                     }
                 }
-                
-                TimerView(timer: timer)
+
             }
 
         
@@ -83,10 +81,14 @@ struct EmojiArtDocumentView: View {
                     return self.drop(providers: providers, at: location)
                 }
                 .navigationBarItems(
-                    leading: ColorPicker("", selection: $document.bgColor).onChange(of: document.bgColor, perform: { color in
+                    leading: HStack{
+                        TimerView(timer: timer)
+                        ColorPicker("", selection: $document.bgColor).onChange(of: document.bgColor, perform: { color in
                         document.bgColor = color
                         print(color)
-                    }),
+                        })
+                        
+                    },
                     trailing: Button(action: {
                     if let url = UIPasteboard.general.url {
                         if self.document.backgroundURL != nil {
@@ -118,7 +120,7 @@ struct EmojiArtDocumentView: View {
 
             }
         .onDisappear{
-            document.saveUserSettings()
+            document.saveColor()
         }
     }
 

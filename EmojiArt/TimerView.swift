@@ -18,10 +18,12 @@ struct TimerView: View {
     }
 
     var body: some View {
+        Image(systemName: "timer").imageScale(.large)
+        Text("\(cumulatedTime) s")
         HStack {
-            Image(systemName: "timer").imageScale(.large)
-            Text("\(cumulatedTime) s")
+            
         }
+        
         .padding()
         
         //load cumulated time if present
