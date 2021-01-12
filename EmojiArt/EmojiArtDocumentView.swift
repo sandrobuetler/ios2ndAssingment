@@ -27,9 +27,6 @@ struct EmojiArtDocumentView: View {
         }
     }
 
-    private var colorPicker: ColorPicker {
-        ColorPicker(document: document, backgroundColor: $document.backgroundColor)
-    }
 
     var body: some View {
         VStack {
@@ -85,7 +82,6 @@ struct EmojiArtDocumentView: View {
                     return self.drop(providers: providers, at: location)
                 }
                 .navigationBarItems(
-                    leading: colorPicker,
                     
                     trailing: Button(action: {
                     if let url = UIPasteboard.general.url {

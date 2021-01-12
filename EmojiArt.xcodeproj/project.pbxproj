@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		139B1B7125ADD8A600BDBEED /* EmojiArtWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B1B7025ADD8A600BDBEED /* EmojiArtWall.swift */; };
-		139B1B7425ADE21900BDBEED /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B1B7325ADE21900BDBEED /* ColorPicker.swift */; };
 		A9517C1925AA023A004D25A0 /* TimeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9517C1825AA023A004D25A0 /* TimeCounter.swift */; };
 		A9517C1C25AA044A004D25A0 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9517C1B25AA044A004D25A0 /* TimerView.swift */; };
 		DE20D17224F94D96009B74D9 /* OptionalImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE20D17124F94D96009B74D9 /* OptionalImage.swift */; };
@@ -35,7 +34,6 @@
 
 /* Begin PBXFileReference section */
 		139B1B7025ADD8A600BDBEED /* EmojiArtWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtWall.swift; sourceTree = "<group>"; };
-		139B1B7325ADE21900BDBEED /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		A9517C1825AA023A004D25A0 /* TimeCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCounter.swift; sourceTree = "<group>"; };
 		A9517C1B25AA044A004D25A0 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		DE20D17124F94D96009B74D9 /* OptionalImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalImage.swift; sourceTree = "<group>"; };
@@ -101,7 +99,6 @@
 				F84F1FEB250E1CC600AC5101 /* EmojiArtDocumentStore.swift */,
 				F84F1FED250E3B0D00AC5101 /* EmojiArtDocumentChooser.swift */,
 				DE68759124F798EE00B58871 /* EmojiArtDocumentView.swift */,
-				139B1B7325ADE21900BDBEED /* ColorPicker.swift */,
 				DE6875A524F7A22F00B58871 /* EmojiArtExtensions.swift */,
 				F84F1FE7250BE10900AC5101 /* Grid.swift */,
 				F84F1FE8250BE10900AC5101 /* GridLayout.swift */,
@@ -202,7 +199,6 @@
 			files = (
 				DE68758E24F798EE00B58871 /* AppDelegate.swift in Sources */,
 				DE68759024F798EE00B58871 /* SceneDelegate.swift in Sources */,
-				139B1B7425ADE21900BDBEED /* ColorPicker.swift in Sources */,
 				F8E894ED250A8BB80057DD8A /* EmojiArtDocument+Palette.swift in Sources */,
 				DE6875A624F7A22F00B58871 /* EmojiArtExtensions.swift in Sources */,
 				139B1B7125ADD8A600BDBEED /* EmojiArtWall.swift in Sources */,
