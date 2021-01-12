@@ -18,7 +18,7 @@ class EmojiArtDocument: ObservableObject, Hashable, Equatable, Identifiable {
     
     static let palette: String =  "🐶🐱🐹🐰🦊🐼🐨🐯🐸🐵🐧🐦🐤🦆🦅🦇🐺"
 
-    @Published var backgroundColor: Color = Color.white
+    @Published var bgColor: Color = Color.white
     @Published private var emojiArt: EmojiArt
     private var autosaveCancellable: AnyCancellable?
 
@@ -31,15 +31,19 @@ class EmojiArtDocument: ObservableObject, Hashable, Equatable, Identifiable {
         self.url = url
         let defaultsKey = "EmojiArtDocument.\(id.uuidString)"
         timer = TimeCounter(totalUsedTime: UserDefaults.standard.integer(forKey: "\(defaultsKey).totalUsedTime"))
-        if let colorData = UserDefaults.standard.data(forKey: "\(defaultsKey).backGroundColor") {
+        
+        
+        if let loadedColor = UserDefaults.standard.data(forKey: "\(defaultsKey).bgColor") {
             do {
-                if let color = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(colorData) as? UIColor {
-                    backgroundColor = Color(color)
+                if let color = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(loadedColor) as? UIColor {
+                    bgColor = Color(color)
+                    print(color)
                 }
             } catch {
-                print("No Color found in defaults")
+                print("No Color found")
             }
         }
+ 
         self.emojiArt = EmojiArt(json: try? Data(contentsOf: url)) ?? EmojiArt()
         fetchBackgroundImageData()
         autosaveCancellable = $emojiArt.sink { emojiArt in
@@ -78,19 +82,21 @@ class EmojiArtDocument: ObservableObject, Hashable, Equatable, Identifiable {
     }
     
     @available(iOS 14.0, *)
-    func saveUserSettings() {
+    func saveColor() {
         let defaultsKey = "EmojiArtDocument.\(id.uuidString)"
         var colorData: NSData?
-        let backGroundColour: UIColor? = UIColor(self.backgroundColor)
-        if let color = backGroundColour {
+        let bgColor: UIColor? = UIColor(self.bgColor)
+        if let color = bgColor {
               do {
                 let data = try NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false) as NSData?
                 colorData = data
               } catch {
-                print("Could not save color to defaults")
+                
+                print("Could not save color")
               }
             }
-        UserDefaults.standard.set(colorData, forKey: "\(defaultsKey).backgroundColor")
+        
+        UserDefaults.standard.set(colorData, forKey: "\(defaultsKey).bgColor")
         
     }
     

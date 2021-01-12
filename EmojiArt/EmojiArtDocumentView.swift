@@ -15,18 +15,19 @@ struct EmojiArtDocumentView: View {
         self.opend = opend
         chosenPalette = document.defaultPalette
     }
-    
-    
+
     
     var timer: TimeCounter {
         let t = TimeCounter(totalUsedTime: 0)
+        
         if opend {
             return t
         } else {
             return document.timer
         }
     }
-
+    
+    
 
     var body: some View {
         VStack {
@@ -43,16 +44,14 @@ struct EmojiArtDocumentView: View {
                         }
                     }
                 }
-                
-                TimerView(timer: timer)
+
             }
 
-           
-
+        
             
             GeometryReader { geometry in
                 ZStack {
-                    Color.white.overlay(
+                    self.document.bgColor.overlay(
                         OptionalImage(uiImage: self.document.backgroundImage)
                             .scaleEffect(self.zoomScale)
                             .offset(self.panOffset)
@@ -82,7 +81,14 @@ struct EmojiArtDocumentView: View {
                     return self.drop(providers: providers, at: location)
                 }
                 .navigationBarItems(
-                    
+                    leading: HStack{
+                        TimerView(timer: timer)
+                        ColorPicker("", selection: $document.bgColor).onChange(of: document.bgColor, perform: { color in
+                        document.bgColor = color
+                        print(color)
+                    })
+                        
+                    },
                     trailing: Button(action: {
                     if let url = UIPasteboard.general.url {
                         if self.document.backgroundURL != nil {
@@ -114,7 +120,7 @@ struct EmojiArtDocumentView: View {
 
             }
         .onDisappear{
-            document.saveUserSettings()
+            document.saveColor()
         }
     }
 
