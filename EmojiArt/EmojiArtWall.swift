@@ -25,7 +25,7 @@ struct EmojiArtWall: View {
                 Button(action: {
                     isPresented = false
                 }, label: {
-                    Image(systemName: "house").imageScale(.large)
+                    Image(systemName: "list.dash").imageScale(.large)
                 })
                 Grid(store.documents, id: \.self) {document in
                     NavigationLink(destination: EmojiArtDocumentView(document:document, opend: false)) {

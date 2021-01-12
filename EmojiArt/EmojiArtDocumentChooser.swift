@@ -39,7 +39,7 @@ struct EmojiArtDocumentChooser: View {
                     Button(action: {
                         isWallOn = true
                     }, label: {
-                        Image(systemName: "square.grid.2x2").imageScale(.large)
+                        Image(systemName: "rectangle.split.2x2.fill").imageScale(.large)
                     })
                     EditButton()
                 }
