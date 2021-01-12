@@ -1,5 +1,6 @@
 import SwiftUI
 
+@available(iOS 14.0, *)
 struct EmojiArtDocumentView: View {
     
     @ObservedObject var document: EmojiArtDocument
@@ -26,23 +27,32 @@ struct EmojiArtDocumentView: View {
         }
     }
 
+    private var colorPicker: ColorPicker {
+        ColorPicker(document: document, backgroundColor: $document.backgroundColor)
+    }
+
     var body: some View {
         VStack {
-            HStack {
-                PaletteChooser(document: document, chosenPalette: $chosenPalette)
-                ScrollView(.horizontal) {
-                    HStack {
-                        ForEach(self.chosenPalette.map { String($0) }, id: \.self) { emoji in
-                            Text(emoji)
-                                .font(Font.system(size: self.defaultEmojiSize))
-                                .onDrag { NSItemProvider(object: emoji as NSString) }
+            if !opend{
+                HStack {
+                    PaletteChooser(document: document, chosenPalette: $chosenPalette)
+                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach(self.chosenPalette.map { String($0) }, id: \.self) { emoji in
+                                Text(emoji)
+                                    .font(Font.system(size: self.defaultEmojiSize))
+                                    .onDrag { NSItemProvider(object: emoji as NSString) }
+                            }
                         }
                     }
                 }
+                
+                TimerView(timer: timer)
             }
 
-            TimerView(timer: timer)
+           
 
+            
             GeometryReader { geometry in
                 ZStack {
                     Color.white.overlay(
@@ -74,7 +84,10 @@ struct EmojiArtDocumentView: View {
                     location = CGPoint(x: location.x / self.zoomScale, y: location.y / self.zoomScale)
                     return self.drop(providers: providers, at: location)
                 }
-                .navigationBarItems(trailing: Button(action: {
+                .navigationBarItems(
+                    leading: colorPicker,
+                    
+                    trailing: Button(action: {
                     if let url = UIPasteboard.general.url {
                         if self.document.backgroundURL != nil {
                             self.isConfirmationAlertPresented = true
@@ -101,7 +114,11 @@ struct EmojiArtDocumentView: View {
                 .onReceive(self.document.$backgroundImage) { backgroundImage in
                     self.zoomToFit(backgroundImage, in: geometry.size)
                 }
+                }
+
             }
+        .onDisappear{
+            document.saveUserSettings()
         }
     }
 
