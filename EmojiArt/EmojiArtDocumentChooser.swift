@@ -9,7 +9,7 @@ struct EmojiArtDocumentChooser: View {
         return NavigationView {
             List {
                 ForEach(self.store.documents) { document in
-                    NavigationLink(destination: EmojiArtDocumentView(document: document).navigationBarTitle(self.store.name(for: document))) {
+                    NavigationLink(destination: EmojiArtDocumentView(document: document, opend: false).navigationBarTitle(self.store.name(for: document))) {
                         EditableText(self.store.name(for: document), isEditing: self.editMode.isEditing) { name in
                             self.store.setName(name, for: document)
                         }
