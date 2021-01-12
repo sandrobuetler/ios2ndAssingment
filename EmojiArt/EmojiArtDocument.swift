@@ -18,6 +18,7 @@ class EmojiArtDocument: ObservableObject, Hashable, Equatable, Identifiable {
     
     static let palette: String =  "🐶🐱🐹🐰🦊🐼🐨🐯🐸🐵🐧🐦🐤🦆🦅🦇🐺"
 
+    @Published var backgroundColor: Color = Color.white
     @Published private var emojiArt: EmojiArt
     private var autosaveCancellable: AnyCancellable?
 
@@ -30,7 +31,15 @@ class EmojiArtDocument: ObservableObject, Hashable, Equatable, Identifiable {
         self.url = url
         let defaultsKey = "EmojiArtDocument.\(id.uuidString)"
         timer = TimeCounter(totalUsedTime: UserDefaults.standard.integer(forKey: "\(defaultsKey).totalUsedTime"))
-        
+        if let colorData = UserDefaults.standard.data(forKey: "\(defaultsKey).backGroundColor") {
+            do {
+                if let color = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(colorData) as? UIColor {
+                    backgroundColor = Color(color)
+                }
+            } catch {
+                print("No Color found in defaults")
+            }
+        }
         self.emojiArt = EmojiArt(json: try? Data(contentsOf: url)) ?? EmojiArt()
         fetchBackgroundImageData()
         autosaveCancellable = $emojiArt.sink { emojiArt in
@@ -66,6 +75,23 @@ class EmojiArtDocument: ObservableObject, Hashable, Equatable, Identifiable {
         if let index = emojiArt.emojis.firstIndex(matching: emoji) {
             emojiArt.emojis[index].size = Int((CGFloat(emojiArt.emojis[index].size) * scale).rounded(.toNearestOrEven))
         }
+    }
+    
+    @available(iOS 14.0, *)
+    func saveUserSettings() {
+        let defaultsKey = "EmojiArtDocument.\(id.uuidString)"
+        var colorData: NSData?
+        let backGroundColour: UIColor? = UIColor(self.backgroundColor)
+        if let color = backGroundColour {
+              do {
+                let data = try NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false) as NSData?
+                colorData = data
+              } catch {
+                print("Could not save color to defaults")
+              }
+            }
+        UserDefaults.standard.set(colorData, forKey: "\(defaultsKey).backgroundColor")
+        
     }
     
     var backgroundURL: URL? {

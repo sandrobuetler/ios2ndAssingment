@@ -1,8 +1,10 @@
 import SwiftUI
 
+@available(iOS 14.0, *)
 struct EmojiArtDocumentChooser: View {
     @ObservedObject var store: EmojiArtDocumentStore
     @State private var editMode = EditMode.inactive
+    @State var isWallOn = false
 
     var body: some View {
         print(self.editMode)
@@ -23,6 +25,9 @@ struct EmojiArtDocumentChooser: View {
                         }
                 })
             }
+            .fullScreenCover(isPresented: $isWallOn) {
+                EmojiArtWall(store: store, currentView: self)
+            }
             .navigationBarTitle(self.store.name)
             .navigationBarItems(
                 leading: Button(action: {
@@ -30,7 +35,14 @@ struct EmojiArtDocumentChooser: View {
                 }, label: {
                     Image(systemName: "plus").imageScale(.large)
                 }),
-                trailing: EditButton()
+                trailing: HStack {
+                    Button(action: {
+                        isWallOn = true
+                    }, label: {
+                        Image(systemName: "rectangle.split.2x2.fill").imageScale(.large)
+                    })
+                    EditButton()
+                }
             )
             .environment(\.editMode, $editMode)
         }
