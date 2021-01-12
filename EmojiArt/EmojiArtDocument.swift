@@ -11,6 +11,11 @@ class EmojiArtDocument: ObservableObject, Hashable, Equatable, Identifiable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
+    
+    private var currentTime: Double = 0
+    
+    var timer: TimeCounter
+    
     static let palette: String =  "🐶🐱🐹🐰🦊🐼🐨🐯🐸🐵🐧🐦🐤🦆🦅🦇🐺"
 
     @Published private var emojiArt: EmojiArt
@@ -23,6 +28,9 @@ class EmojiArtDocument: ObservableObject, Hashable, Equatable, Identifiable {
     init(url: URL) {
         self.id = UUID()
         self.url = url
+        let defaultsKey = "EmojiArtDocument.\(id.uuidString)"
+        timer = TimeCounter(totalUsedTime: UserDefaults.standard.integer(forKey: "\(defaultsKey).totalUsedTime"))
+        
         self.emojiArt = EmojiArt(json: try? Data(contentsOf: url)) ?? EmojiArt()
         fetchBackgroundImageData()
         autosaveCancellable = $emojiArt.sink { emojiArt in

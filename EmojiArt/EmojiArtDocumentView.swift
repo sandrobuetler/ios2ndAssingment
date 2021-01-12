@@ -7,12 +7,24 @@ struct EmojiArtDocumentView: View {
     @State private var isPastingExplanationPresented: Bool = false
     @State private var isConfirmationAlertPresented: Bool = false
 
-    init(document: EmojiArtDocument) {
+    var opend: Bool
+    
+    init(document: EmojiArtDocument, opend: Bool) {
         self.document = document
+        self.opend = opend
         chosenPalette = document.defaultPalette
     }
     
     
+    
+    var timer: TimeCounter {
+        let t = TimeCounter(totalUsedTime: 0)
+        if opend {
+            return t
+        } else {
+            return document.timer
+        }
+    }
 
     var body: some View {
         VStack {
@@ -28,7 +40,9 @@ struct EmojiArtDocumentView: View {
                     }
                 }
             }
-            TimerView()
+
+            TimerView(timer: timer)
+
             GeometryReader { geometry in
                 ZStack {
                     Color.white.overlay(
