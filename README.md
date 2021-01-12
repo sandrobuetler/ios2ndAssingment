@@ -1,6 +1,13 @@
 # ios2ndAssingment
 2nd Assingment for the MobileiOSApplikationen Module @FHNW Fall 2020
 
+Coded by Alejandro Garcia & Sandro Bütler
+
+Impressions:
+</br>
+<img src="Screenshots/ios_a2_1.jpeg" height=600px>
+<img src="Screenshots/ios_a2_2.jpeg" height=600px>
+
 ## Feature List
 
 #### 01-TimeTracker
@@ -47,3 +54,5 @@
 - Verify: Ist der Name des Dokuments angepasst?
 
 ### Branch Structure: feature/FEATURENAME
+
+
