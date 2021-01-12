@@ -86,7 +86,7 @@ struct EmojiArtDocumentView: View {
                         ColorPicker("", selection: $document.bgColor).onChange(of: document.bgColor, perform: { color in
                         document.bgColor = color
                         print(color)
-                        })
+                    })
                         
                     },
                     trailing: Button(action: {

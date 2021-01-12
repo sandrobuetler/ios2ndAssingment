@@ -32,15 +32,18 @@ class EmojiArtDocument: ObservableObject, Hashable, Equatable, Identifiable {
         let defaultsKey = "EmojiArtDocument.\(id.uuidString)"
         timer = TimeCounter(totalUsedTime: UserDefaults.standard.integer(forKey: "\(defaultsKey).totalUsedTime"))
         
+        
         if let loadedColor = UserDefaults.standard.data(forKey: "\(defaultsKey).bgColor") {
             do {
                 if let color = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(loadedColor) as? UIColor {
                     bgColor = Color(color)
+                    print(color)
                 }
             } catch {
                 print("No Color found")
             }
         }
+ 
         self.emojiArt = EmojiArt(json: try? Data(contentsOf: url)) ?? EmojiArt()
         fetchBackgroundImageData()
         autosaveCancellable = $emojiArt.sink { emojiArt in
