@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		131BA79525DBB36A00194803 /* Emoji_ArtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131BA79425DBB36A00194803 /* Emoji_ArtTests.swift */; };
 		139B1B7125ADD8A600BDBEED /* EmojiArtWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B1B7025ADD8A600BDBEED /* EmojiArtWall.swift */; };
 		A9517C1925AA023A004D25A0 /* TimeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9517C1825AA023A004D25A0 /* TimeCounter.swift */; };
 		A9517C1C25AA044A004D25A0 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9517C1B25AA044A004D25A0 /* TimerView.swift */; };
@@ -32,7 +33,20 @@
 		F8E894ED250A8BB80057DD8A /* EmojiArtDocument+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E894EC250A8BB80057DD8A /* EmojiArtDocument+Palette.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		131BA79725DBB36A00194803 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE68758224F798EE00B58871 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DE68758924F798EE00B58871;
+			remoteInfo = EmojiArt;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		131BA79225DBB36A00194803 /* Emoji ArtTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Emoji ArtTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		131BA79425DBB36A00194803 /* Emoji_ArtTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji_ArtTests.swift; sourceTree = "<group>"; };
+		131BA79625DBB36A00194803 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		139B1B7025ADD8A600BDBEED /* EmojiArtWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtWall.swift; sourceTree = "<group>"; };
 		A9517C1825AA023A004D25A0 /* TimeCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCounter.swift; sourceTree = "<group>"; };
 		A9517C1B25AA044A004D25A0 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -61,6 +75,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		131BA78F25DBB36A00194803 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DE68758724F798EE00B58871 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -71,10 +92,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		131BA79325DBB36A00194803 /* Emoji ArtTests */ = {
+			isa = PBXGroup;
+			children = (
+				131BA79425DBB36A00194803 /* Emoji_ArtTests.swift */,
+				131BA79625DBB36A00194803 /* Info.plist */,
+			);
+			path = "Emoji ArtTests";
+			sourceTree = "<group>";
+		};
 		DE68758124F798EE00B58871 = {
 			isa = PBXGroup;
 			children = (
 				DE68758C24F798EE00B58871 /* EmojiArt */,
+				131BA79325DBB36A00194803 /* Emoji ArtTests */,
 				DE68758B24F798EE00B58871 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -83,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				DE68758A24F798EE00B58871 /* Emoji Art.app */,
+				131BA79225DBB36A00194803 /* Emoji ArtTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -129,6 +161,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		131BA79125DBB36A00194803 /* Emoji ArtTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 131BA79B25DBB36A00194803 /* Build configuration list for PBXNativeTarget "Emoji ArtTests" */;
+			buildPhases = (
+				131BA78E25DBB36A00194803 /* Sources */,
+				131BA78F25DBB36A00194803 /* Frameworks */,
+				131BA79025DBB36A00194803 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				131BA79825DBB36A00194803 /* PBXTargetDependency */,
+			);
+			name = "Emoji ArtTests";
+			productName = "Emoji ArtTests";
+			productReference = 131BA79225DBB36A00194803 /* Emoji ArtTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		DE68758924F798EE00B58871 /* EmojiArt */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE68759E24F798F200B58871 /* Build configuration list for PBXNativeTarget "EmojiArt" */;
@@ -152,10 +202,14 @@
 		DE68758224F798EE00B58871 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1160;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = fhnw;
 				TargetAttributes = {
+					131BA79125DBB36A00194803 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = DE68758924F798EE00B58871;
+					};
 					DE68758924F798EE00B58871 = {
 						CreatedOnToolsVersion = 11.6;
 					};
@@ -175,11 +229,19 @@
 			projectRoot = "";
 			targets = (
 				DE68758924F798EE00B58871 /* EmojiArt */,
+				131BA79125DBB36A00194803 /* Emoji ArtTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		131BA79025DBB36A00194803 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DE68758824F798EE00B58871 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -193,6 +255,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		131BA78E25DBB36A00194803 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				131BA79525DBB36A00194803 /* Emoji_ArtTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DE68758624F798EE00B58871 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -222,6 +292,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		131BA79825DBB36A00194803 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DE68758924F798EE00B58871 /* EmojiArt */;
+			targetProxy = 131BA79725DBB36A00194803 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		DE68759824F798F200B58871 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -234,6 +312,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		131BA79925DBB36A00194803 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Emoji ArtTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.fhnw.Emoji-ArtTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Emoji Art.app/Emoji Art";
+			};
+			name = Debug;
+		};
+		131BA79A25DBB36A00194803 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Emoji ArtTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.fhnw.Emoji-ArtTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Emoji Art.app/Emoji Art";
+			};
+			name = Release;
+		};
 		DE68759C24F798F200B58871 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -389,6 +509,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		131BA79B25DBB36A00194803 /* Build configuration list for PBXNativeTarget "Emoji ArtTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				131BA79925DBB36A00194803 /* Debug */,
+				131BA79A25DBB36A00194803 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DE68758524F798EE00B58871 /* Build configuration list for PBXProject "EmojiArt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
