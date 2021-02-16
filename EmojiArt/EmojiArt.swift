@@ -9,7 +9,7 @@ struct EmojiArt: Codable {
     private var uniqueEmojiId = 0
     
     mutating func addEmoji(_ text: String, x: Int, y: Int, size: Int) {
-        if text.isEmpty{
+        if text.isEmpty || size > 1{
             return
         }else{
         uniqueEmojiId += 1
