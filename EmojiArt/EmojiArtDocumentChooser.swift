@@ -41,7 +41,7 @@ struct EmojiArtDocumentChooser: View {
                     }, label: {
                         Image(systemName: "rectangle.split.2x2.fill").imageScale(.large)
                     })
-                    EditButton()
+                    EditButton().accessibility(identifier: "EditDoneButton")
                 }
             )
             .environment(\.editMode, $editMode)
