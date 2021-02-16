@@ -9,8 +9,12 @@ struct EmojiArt: Codable {
     private var uniqueEmojiId = 0
     
     mutating func addEmoji(_ text: String, x: Int, y: Int, size: Int) {
+        if text.isEmpty{
+            return
+        }else{
         uniqueEmojiId += 1
         emojis.append(Emoji(text: text, x: x, y: y, size: size, id: uniqueEmojiId))
+        }
     }
     
     var json: Data? {

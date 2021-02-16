@@ -27,7 +27,6 @@ class Emoji_ArtTests: XCTestCase {
 
     func testAddEmojiTextEmpty(){
         //given
-        //var emojiArt = EmojiArt()
         let givenEmojiCount = emojiArt.emojis.count
         
         //when
