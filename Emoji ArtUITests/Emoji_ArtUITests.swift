@@ -7,13 +7,11 @@
 //
 
 import XCTest
-//quelle: https://www.youtube.com/watch?v=-eiY9eauJr0&ab_channel=iOSAcademy
-@testable import Emoji_Art
 
 class Emoji_ArtUITests: XCTestCase {
     
     
-    //var app: XCUIApplication
+    private var app: XCUIApplication!
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -21,41 +19,40 @@ class Emoji_ArtUITests: XCTestCase {
         //quelle: https://www.swiftbysundell.com/articles/getting-started-with-xcode-ui-testing-in-swift/
         super.setUp()
         
-        //app = XCUIApplication()
+        self.app = XCUIApplication()
+        self.app.launch()
         
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-        //app.launchArguments.append("--iutesting")
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
     func testNameChange() throws {
         // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
         
-        let editDoneButton = app.buttons["EditDoneButton"]
+        
+     let editDoneButton = app.buttons["EditDoneButton"]
         //textfeld kann nicht angesprochen werden
-        let documentName = app.textFields["DocumentName"]
+        //let documentName = app.textFields["DocumentName"]
+        //let documentName = app.textFields["DocumentName"]
         
-
+        let textArea = app.tables["List"]
+ 
+        
         //edit drücken
-        editDoneButton.tap()
+       editDoneButton.tap()
         
         XCTAssertEqual("Done", editDoneButton.label)
         
-        
+       textArea.cells.allElementsBoundByIndex.first?.tap()
+       app.keys["t"].tap()
+       app.keys["e"].tap()
+       app.keys["s"].tap()
+       app.keys["t"].tap()
         //documentName.typeText("Dokumentname")
         
-        editDoneButton.tap()
-        
-        XCTAssertEqual("Edit", editDoneButton.label)
-        // XCTAssertEqual("Dokumentname", documentName.label)
+       editDoneButton.tap()
+      XCTAssertEqual("Edit", editDoneButton.label)
+      XCTAssertEqual("Untitledtest", textArea.cells.allElementsBoundByIndex.first?.label)
  
         
         // Use recording to get started writing UI tests.

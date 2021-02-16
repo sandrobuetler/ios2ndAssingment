@@ -14,7 +14,7 @@ struct EmojiArtDocumentChooser: View {
                     NavigationLink(destination: EmojiArtDocumentView(document: document, opend: false).navigationBarTitle(self.store.name(for: document))) {
                         EditableText(self.store.name(for: document), isEditing: self.editMode.isEditing) { name in
                             self.store.setName(name, for: document)
-                        }
+                        }.accessibility(identifier: "DocumentName")
                     }
                 }
                 .onDelete(perform: { indexSet in
@@ -24,7 +24,7 @@ struct EmojiArtDocumentChooser: View {
                             self.store.removeDocument(document)
                         }
                 })
-            }
+            }.accessibility(identifier: "List")
             .fullScreenCover(isPresented: $isWallOn) {
                 EmojiArtWall(store: store, currentView: self)
             }
@@ -34,7 +34,7 @@ struct EmojiArtDocumentChooser: View {
                     self.store.addDocument()
                 }, label: {
                     Image(systemName: "plus").imageScale(.large)
-                }),
+                }).accessibility(identifier: "AddButton"),
                 trailing: HStack {
                     Button(action: {
                         isWallOn = true
