@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0CB4E19B-5053-427E-886C-410B254B9C2F"
-            shouldBeEnabled = "Yes"
+            uuid = "8840DE48-0EB0-46D9-8FA9-82AB87269704"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EmojiArt/EmojiArtDocument.swift"
+            filePath = "Emoji ArtTests/Emoji_ArtTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "init(url:)"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "testAddEmojiIdIncrements()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
