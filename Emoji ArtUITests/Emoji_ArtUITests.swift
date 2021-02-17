@@ -21,50 +21,57 @@ class Emoji_ArtUITests: XCTestCase {
         
         self.app = XCUIApplication()
         self.app.launch()
+        print(app.debugDescription)
         
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
     }
+    
 
+    // helperfunction to get a random string
+    // quelle: https://stackoverflow.com/questions/26845307/generate-random-alphanumeric-string-in-swift
+    func randomString(length: Int) -> String {
+      let letters = "abcdefghijklmnopqrstuvwxyz"
+      return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+    
+    
     func testNameChange() throws {
-        // UI tests must launch the application that they test.
         
-        
-     let editDoneButton = app.buttons["EditDoneButton"]
-        //textfeld kann nicht angesprochen werden
-        //let documentName = app.textFields["DocumentName"]
-        //let documentName = app.textFields["DocumentName"]
-        
-        let textArea = app.tables["List"]
+        let addButton = app.buttons["AddButton"]
+        let editDoneButton = app.buttons["EditDoneButton"]
+        let List = app.tables["List"]
  
+        //add drücken
+        addButton.tap()
         
         //edit drücken
-       editDoneButton.tap()
+        editDoneButton.tap()
         
+        // Check if Editbutton Label has changed
         XCTAssertEqual("Done", editDoneButton.label)
         
-       textArea.cells.allElementsBoundByIndex.first?.tap()
-       app.keys["t"].tap()
-       app.keys["e"].tap()
-       app.keys["s"].tap()
-       app.keys["t"].tap()
-        //documentName.typeText("Dokumentname")
         
-       editDoneButton.tap()
-      XCTAssertEqual("Edit", editDoneButton.label)
-      XCTAssertEqual("Untitledtest", textArea.cells.allElementsBoundByIndex.first?.label)
- 
+        // Press on the first Cell to Edit
+        List.cells.allElementsBoundByIndex.first?.tap()
+
+        // Add Random Character to Document Name
+        let randomChar1 = randomString(length: 1)
+        app.keys[randomChar1].tap()
         
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let randomChar2 = randomString(length: 1)
+        app.keys[randomChar2].tap()
+
+        // Press Done Buttom & Check if Label has Changed
+        editDoneButton.tap()
+        XCTAssertEqual("Edit", editDoneButton.label)
+        
+        // Check if Cell with new DocumentName exists
+        let renamedCell = app.tables.cells["Untitled" + randomChar1 + randomChar2]
+        XCTAssertTrue(renamedCell.exists)
+        
+
     }
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
+
 }

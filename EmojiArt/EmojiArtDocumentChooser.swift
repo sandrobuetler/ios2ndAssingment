@@ -14,7 +14,7 @@ struct EmojiArtDocumentChooser: View {
                     NavigationLink(destination: EmojiArtDocumentView(document: document, opend: false).navigationBarTitle(self.store.name(for: document))) {
                         EditableText(self.store.name(for: document), isEditing: self.editMode.isEditing) { name in
                             self.store.setName(name, for: document)
-                        }.accessibility(identifier: "DocumentName")
+                        }.accessibility(identifier: self.store.name)
                     }
                 }
                 .onDelete(perform: { indexSet in
